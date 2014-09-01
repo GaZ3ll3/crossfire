@@ -297,6 +297,8 @@ h.finished = 0;
 h.steps = 0;
 
 
+
+
 h.rail1 = [6, 11, 16, 21, 26,  124 , 128, 123, 90, 85, 80, 75, 70];
 h.rail = h.rail1;
 h.rail2 = [10, 15, 20, 25, 30, 121 , 126 ,122, 86, 81, 76, 71, 66];
@@ -359,7 +361,19 @@ guidata(hObj, h);
 % UIWBIT makes crossfire wait for user response (see UIRESUME)
 % uiwait(h.figure1);
 
+% AI INTERFACE
 
+
+% while loop, if finished is not 1, then run aiagent
+
+% design of aiagent 
+
+
+% four ai functions, aiagent calls the handle, give them adapted
+% information. And ai functions return move and also openning layout.
+
+% aiagent will execute the move by using following statement
+%  simulate('C',6,5, 'D', 6, 1, h, hObj);
 
 
 
