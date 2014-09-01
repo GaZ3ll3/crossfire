@@ -22,7 +22,7 @@ function varargout = crossfire(varargin)
 
 % Edit the above text to modify the response to help crossfire
 
-% Last Modified by GUIDE v2.5 30-Aug-2014 16:16:53
+% Last Modified by GUIDE v2.5 01-Sep-2014 14:09:54
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -294,6 +294,7 @@ h.flags = [0,0,0,0];
 h.loss  = [0,0,0,0];
 
 h.finished = 0;
+h.steps = 0;
 
 
 h.rail1 = [6, 11, 16, 21, 26,  124 , 128, 123, 90, 85, 80, 75, 70];
@@ -327,7 +328,7 @@ h.rail = union(h.rail, h.rail14);
 
 
 
-h.player.color = 'r';
+h.player.color = 'g';
 % setup board for each player and check board
 h.player1.color = 'r';
 h.player1_open = [...
@@ -1794,3 +1795,15 @@ h.side = 'O';
 h.X = 0; h.Y = 0;
 h = playturn(ha, h);
 guidata(hObj, h);
+
+
+% --- Executes when entered data in editable cell(s) in record.
+function record_CellEditCallback(hObject, eventdata, handles)
+% hObject    handle to record (see GCBO)
+% eventdata  structure with the following fields (see UITABLE)
+%	Indices: row and column indices of the cell(s) edited
+%	PreviousData: previous data for the cell(s) edited
+%	EditData: string(s) entered by the user
+%	NewData: EditData or its converted form set on the Data property. Empty if Data was not changed
+%	Error: error string when failed to convert EditData to appropriate value for Data
+% handles    structure with handles and user data (see GUIDATA)

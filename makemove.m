@@ -1,13 +1,18 @@
-function [h] = makemove(ha, h)
+function [h, ret] = makemove(ha, h)
 %makemove check the result of the move
 %   Detailed explanation goes here
 
 % ret = 1; win
 % ret = 0; both die
 % ret = -1; loss
+% ret = NaN; empty slot
 
 from = mod(h.fromP - 1, 25);
 to   = mod(h.toP - 1, 25);
+
+h.steps = h.steps + 1;
+
+
 
 
 
@@ -19,6 +24,7 @@ if (h.toP == -1)
     h.pos(h.topos) = h.fromP;
     h.pos(h.frompos) = -1;
     h.piece(h.fromP) = h.topos;
+    ret = 'move';
     return;
 end
 
@@ -64,6 +70,7 @@ if  fromlvl <= 9 && tolvl <= 9
         h.pos(h.frompos) = -1;
         h.piece(h.fromP) = h.topos;
         h.piece(h.toP) = -1;
+        ret = 'kill';
         return;
     end
     
@@ -71,6 +78,7 @@ if  fromlvl <= 9 && tolvl <= 9
         set(ha(h.frompos), 'CData', []);
         h.pos(h.frompos) = -1;
         h.piece(h.fromP) = -1;
+        ret = 'lose';
         return;
     end
     
@@ -102,6 +110,7 @@ if  fromlvl <= 9 && tolvl <= 9
                 h.flags(4) = 1;
             end
         end
+        ret = 'both die';
         return;
     end
     
@@ -127,6 +136,7 @@ if fromlvl == 10
             end
 
     end
+    ret = 'both die';
     return;
 end
 
@@ -150,6 +160,7 @@ if tolvl == 10
             end
 
     end
+    ret = 'both die';
     return;
 end
 
@@ -174,6 +185,7 @@ if tolvl == 11
             end
 
         end
+        ret = 'lose';
         return;
     end
 
@@ -185,6 +197,7 @@ if tolvl == 11
         h.pos(h.frompos) = -1;
         h.piece(h.fromP) = h.topos;
         h.piece(h.toP) = -1;
+        ret = 'kill';
         return;
     end
 end
@@ -198,6 +211,7 @@ if tolvl == 12 && h.toX == 1 && (h.toY == 2 || h.toY == 4)
     h.pos(h.frompos) = -1;
     h.piece(h.fromP) = h.topos;
     h.piece(h.toP) = -1;
+    ret = 'kill';
     
     if h.to == 'A' 
         disp('r losses')

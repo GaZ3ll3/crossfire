@@ -81,8 +81,19 @@ position = start + addon;
     end
     [check, h] = checkmove(h);
     
+
+    
     if (check && ~h.finished)
-        h = makemove(ha, h);
+        [h, fight_res] = makemove(ha, h);    
+        database = get(h.record, 'Data');
+
+
+        database{h.steps, 1} = upper(h.player.color);
+        database{h.steps, 2} = strcat(h.from, strcat(int2str(h.fromX), int2str(h.fromY)));
+        database{h.steps, 3} = strcat(h.to, strcat(int2str(h.toX), int2str(h.toY)));
+        database{h.steps, 4} = fight_res;
+        set(h.record, 'Data',database);
+
         disp(h.loss);
         disp(h.flags);    
         h.player.color = next_color(h);
