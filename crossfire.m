@@ -327,6 +327,27 @@ h.rail13 = [40, 45, 50, 55, 60, 86, 81, 76, 71, 66];
 h.rail = union(h.rail, h.rail13);
 h.rail14 = [96, 101, 106, 111, 116, 90, 85, 80, 75, 70];
 h.rail = union(h.rail, h.rail14);
+h.rail15 = [26, 27, 28, 29, 30];
+h.rail = union(h.rail, h.rail15);
+h.rail16 = [56, 57, 58, 59, 60];
+h.rail = union(h.rail, h.rail16);
+h.rail17 = [86, 87, 88, 89, 90];
+h.rail = union(h.rail, h.rail17);
+h.rail18 = [116, 117, 118, 119, 120];
+h.rail = union(h.rail, h.rail18);
+
+
+% adjacency matrix
+h.railadj = zeros(129, 129);
+for k = 1:18
+    temp = h.(genvarname(strcat('rail', int2str(k))));
+    for l = 1:max(size(temp, 2), size(temp, 1)) - 1
+        h.railadj(temp(l), temp(l+1)) = 1;
+        h.railadj(temp(l + 1), temp(l)) = 1;
+    end
+end
+
+ 
 
 
 
@@ -337,9 +358,13 @@ h.player1_open = [...
     4 1 10 11 10;...
     9 0  3 10  3;...
     2 -1 2 -1  1;...
-    7 0 -1 9   2;...
+    7 1 -1 9   2;...
     4 -1 0 -1  6;...
-    5 8  1 5   6];
+    5 8  0 5   6];
+
+
+
+
 
 h.player2.color = 'b';
 h.player3.color = 'g';

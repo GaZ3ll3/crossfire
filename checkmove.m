@@ -54,7 +54,11 @@ if (it_can_move(h) && h.first_click == 0)
                   (ismember(h.frompos, h.rail11) && ismember(h.topos, h.rail11)) || ...
                    (ismember(h.frompos, h.rail12) && ismember(h.topos, h.rail12)) || ...
                     (ismember(h.frompos, h.rail13) && ismember(h.topos, h.rail13)) || ...
-                     (ismember(h.frompos, h.rail14) && ismember(h.topos, h.rail14))
+                     (ismember(h.frompos, h.rail14) && ismember(h.topos, h.rail14)) || ...
+                     (ismember(h.frompos, h.rail15) && ismember(h.topos, h.rail15)) || ...
+                     (ismember(h.frompos, h.rail16) && ismember(h.topos, h.rail16)) || ...
+                     (ismember(h.frompos, h.rail17) && ismember(h.topos, h.rail17)) || ...
+                     (ismember(h.frompos, h.rail18) && ismember(h.topos, h.rail18)) 
 
         disp('same rail to same rail');
         if (ismember(h.frompos, h.rail1) && ismember(h.topos, h.rail1))
@@ -282,6 +286,63 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             end
         end
+        
+        if (ismember(h.frompos, h.rail15) && ismember(h.topos, h.rail15))
+            from_ind = find(h.rail15 == h.frompos);
+            to_ind   = find(h.rail15 == h.topos);
+            if (from_ind ~= to_ind) && ...
+                    sum(h.pos(h.rail15(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
+                    h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
+                % empty in between
+                check = 1;
+                return;
+            else
+                check = 0;
+                return;
+            end
+        end
+        if (ismember(h.frompos, h.rail16) && ismember(h.topos, h.rail16))
+            from_ind = find(h.rail16 == h.frompos);
+            to_ind   = find(h.rail16 == h.topos);
+            if (from_ind ~= to_ind) && ...
+                    sum(h.pos(h.rail16(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
+                    h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
+                % empty in between
+                check = 1;
+                return;
+            else
+                check = 0;
+                return;
+            end
+        end
+        if (ismember(h.frompos, h.rail17) && ismember(h.topos, h.rail17))
+            from_ind = find(h.rail17 == h.frompos);
+            to_ind   = find(h.rail17 == h.topos);
+            if (from_ind ~= to_ind) && ...
+                    sum(h.pos(h.rail17(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
+                    h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
+                % empty in between
+                check = 1;
+                return;
+            else
+                check = 0;
+                return;
+            end
+       end
+       if (ismember(h.frompos, h.rail18) && ismember(h.topos, h.rail18))
+            from_ind = find(h.rail18 == h.frompos);
+            to_ind   = find(h.rail18 == h.topos);
+            if (from_ind ~= to_ind) && ...
+                    sum(h.pos(h.rail18(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
+                    h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
+                % empty in between
+                check = 1;
+                return;
+            else
+                check = 0;
+                return;
+            end
+        end
     % from different railway
     elseif ismember(h.frompos, h.rail) && ismember(h.topos, h.rail) && ...
             ((ismember(h.frompos, h.rail1) && ~ismember(h.topos, h.rail1)) || ...
@@ -297,14 +358,21 @@ if (it_can_move(h) && h.first_click == 0)
             (ismember(h.frompos, h.rail11) && ~ismember(h.topos, h.rail11)) || ...
             (ismember(h.frompos, h.rail12) && ~ismember(h.topos, h.rail12)) || ...
             (ismember(h.frompos, h.rail13) && ~ismember(h.topos, h.rail13)) || ...
-            (ismember(h.frompos, h.rail14) && ~ismember(h.topos, h.rail14)))
+            (ismember(h.frompos, h.rail14) && ~ismember(h.topos, h.rail14)) || ...
+            (ismember(h.frompos, h.rail15) && ~ismember(h.topos, h.rail15)) || ...
+            (ismember(h.frompos, h.rail16) && ~ismember(h.topos, h.rail16)) || ...
+            (ismember(h.frompos, h.rail17) && ~ismember(h.topos, h.rail17)) || ...
+            (ismember(h.frompos, h.rail18) && ~ismember(h.topos, h.rail18))) 
+            
         disp('not same rail');
         % not same railway, must be miner.
-        if (mod(h.fromP, 25) ~= 1 || mod(h.fromP, 25) ~= 2 || mod(h.fromP, 25) ~= 3)
+        if (mod(h.fromP, 25) ~= 1 && mod(h.fromP, 25) ~= 2 && mod(h.fromP, 25) ~= 3)
+            disp('not a miner');
             check = 0;
             return
         else
             % it is a miner, then run the miner 
+            disp('miner move');
             check = miner_dps(h);
             return;
         end
