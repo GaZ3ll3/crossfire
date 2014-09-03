@@ -4,28 +4,22 @@ function [h, frompos, topos] = aiagent(hObj)
 
 % in order to let handle work, it needs to reload everything into h.
 h = guidata(hObj);
-
+database = get(h.record, 'Data');
 
 
 % enemy's AI
     if h.player.color == 'b'
         pause(2);
         
+        [frompos, topos] = AI_script('b', h.piece(26:50), database);
         
-        
-        frompos = 60;
-        topos = 86;
-        
-
 
     end
     
     if h.player.color == 'd'
         pause(2);
         
-        frompos = 116;
-        topos = 90;
-        
+        [frompos, topos] = AI_script('d', h.piece(76:100), database);
 
 
     end
@@ -34,8 +28,7 @@ h = guidata(hObj);
     if h.player.color == 'r'
         pause(2);
         
-        frompos = 26;
-        topos = 120;
+        [frompos, topos] = AI_script('r', h.piece(1:25), database);
         
 
     end
@@ -43,9 +36,7 @@ h = guidata(hObj);
     if h.player.color == 'g'
         pause(2);
         
-
-        frompos = 88;
-        topos = 127;
+        [frompos, topos] = AI_script('g', h.piece(51:75), database);
         
     end
     % human or not

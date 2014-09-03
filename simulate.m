@@ -1,25 +1,34 @@
 function  [h] = simulate(frompos, topos, hObj)
 
 h = guidata(hObj);
-[side1, X1, Y1] = pos2pos(frompos);
 
-if frompos > 120
-    callback1 = get(h.(side1), 'Callback');
-    callback1(hObj, []);
-elseif frompos <= 120
-    callback1 = get(h.(strcat(side1, strcat(int2str(X1), int2str(Y1)))), 'Callback');
-    callback1(hObj, []);
+
+
+
+if (h.pos(frompos) ~= -1)
+    [side1, X1, Y1] = pos2pos(frompos);
+    if frompos > 120
+        callback1 = get(h.(side1), 'Callback');
+        callback1(hObj, []);
+    elseif frompos <= 120
+        callback1 = get(h.(strcat(side1, strcat(int2str(X1), int2str(Y1)))), 'Callback');
+        callback1(hObj, []);
+    end
+    
+    [side2, X2, Y2] = pos2pos(topos);
+    if topos > 120
+        callback2 = get(h.(side2), 'Callback');
+        callback2(hObj, []);
+    elseif topos <= 120
+        callback2 = get(h.(strcat(side2, strcat(int2str(X2), int2str(Y2)))), 'Callback');
+        callback2(hObj, []);
+    end
+else
+    error('wrong click');
+
 end
 
 
-[side2, X2, Y2] = pos2pos(topos);
-if topos > 120
-    callback2 = get(h.(side2), 'Callback');
-    callback2(hObj, []);
-elseif topos <= 120
-    callback2 = get(h.(strcat(side2, strcat(int2str(X2), int2str(Y2)))), 'Callback');
-    callback2(hObj, []);
-end
 
 h = guidata(hObj);
 end

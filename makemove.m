@@ -15,7 +15,6 @@ h.steps = h.steps + 1;
 
 
 
-
 % move a piece to vaccum
 if (h.toP == -1)
 %     disp('move to empty slot');
@@ -92,22 +91,31 @@ if  fromlvl <= 9 && tolvl <= 9
         if tolvl == 9
             if h.toP == 19
                 h.flags(1) = 1;
+                set(ha(h.piece(25)),'CData', h.(genvarname(strcat('r','11'))));
             elseif h.toP == 44 
                 h.flags(2) = 1;
+
+                set(ha(h.piece(50)),'CData', h.(genvarname(strcat('b','11'))));
             elseif h.toP == 69
                 h.flags(3) = 1;
+                set(ha(h.piece(75)),'CData', h.(genvarname(strcat('g','11'))));
             else 
                 h.flags(4) = 1;
+                set(ha(h.piece(100)),'CData', h.(genvarname(strcat('d','11'))));
             end
             
             if h.fromP == 19
                 h.flags(1) = 1;
+                set(ha(h.piece(25)),'CData', h.(genvarname(strcat('r','11'))));
             elseif h.fromP == 44
                 h.flags(2) = 1;
+                set(ha(h.piece(50)),'CData', h.(genvarname(strcat('b','11'))));
             elseif h.fromP == 69
                 h.flags(3) = 1;
+                set(ha(h.piece(75)),'CData', h.(genvarname(strcat('g','11'))));
             else 
                 h.flags(4) = 1;
+                set(ha(h.piece(100)),'CData', h.(genvarname(strcat('d','11'))));
             end
         end
         ret = 'both die';
@@ -127,12 +135,16 @@ if fromlvl == 10
     if tolvl == 9
             if h.toP == 19
                 h.flags(1) = 1;
+                set(ha(h.piece(25)),'CData', h.(genvarname(strcat('r','11'))));
             elseif h.toP == 44 
                 h.flags(2) = 1;
+                 set(ha(h.piece(50)),'CData', h.(genvarname(strcat('b','11'))));
             elseif h.toP == 69
                 h.flags(3) = 1;
+                 set(ha(h.piece(75)),'CData', h.(genvarname(strcat('g','11'))));
             else 
                 h.flags(4) = 1;
+                set(ha(h.piece(100)),'CData', h.(genvarname(strcat('d','11'))));
             end
 
     end
@@ -151,12 +163,16 @@ if tolvl == 10
     if fromlvl == 9
             if h.fromP == 19
                 h.flags(1) = 1;
+                set(ha(h.piece(25)),'CData', h.(genvarname(strcat('r','11'))));
             elseif h.fromP == 44
                 h.flags(2) = 1;
+                set(ha(h.piece(50)),'CData', h.(genvarname(strcat('b','11'))));
             elseif h.fromP == 69
                 h.flags(3) = 1;
+                set(ha(h.piece(75)),'CData', h.(genvarname(strcat('g','11'))));
             else 
                 h.flags(4) = 1;
+                set(ha(h.piece(100)),'CData', h.(genvarname(strcat('d','11'))));
             end
 
     end
@@ -176,12 +192,16 @@ if tolvl == 11
         if fromlvl == 9
             if h.fromP == 19
                 h.flags(1) = 1;
+                set(ha(h.piece(25)),'CData', h.(genvarname(strcat('r','11'))));
             elseif h.fromP == 44
                 h.flags(2) = 1;
+                set(ha(h.piece(50)),'CData', h.(genvarname(strcat('b','11'))));
             elseif h.fromP == 69
                 h.flags(3) = 1;
+                set(ha(h.piece(75)),'CData', h.(genvarname(strcat('g','11'))));
             else 
                 h.flags(4) = 1;
+                set(ha(h.piece(100)),'CData', h.(genvarname(strcat('d','11'))));
             end
 
         end
@@ -262,4 +282,6 @@ if tolvl == 12 && h.toX == 1 && (h.toY == 2 || h.toY == 4)
 end
 
 end
+
+
 

@@ -2,6 +2,8 @@ function [h]=importpiece(ha, h, color, open)
 % import piece information from each players openning.
 % and check board info
 stat = zeros(12,1);
+
+bb = 1;
 if color == 'r'
     start = 0;
     pstart = 0;
@@ -17,85 +19,135 @@ elseif color == 'd'
 end
 
 
+
+
 for i = 1:6
     for j = 1:5
         if open(i,j) == 0
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'0'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'0'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i - 1) + j) =pstart + stat(1) + 1;
             h.piece(pstart + stat(1) + 1) = start + 5*(i-1) + j;
             stat(1) = stat(1) + 1;
         end
 
         if open(i,j) == 1
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'1'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'1'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(2) + 4;
             h.piece(pstart + stat(2) + 4) = start + 5*(i-1) + j;
             stat(2) = stat(2) + 1;
         end
 
         if open(i,j) == 2
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'2'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'2'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(3) + 7;
             h.piece(pstart + stat(3) + 7) = start + 5*(i-1) + j;
             stat(3) = stat(3) + 1;
         end   
 
         if open(i,j) == 3
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'3'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'3'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(4) + 10;
             h.piece(pstart + stat(4) + 10) = start + 5*(i-1) + j;
             stat(4) = stat(4) + 1;
         end            
         if open(i,j) == 4
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'4'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'4'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(5) + 12;
             h.piece(pstart + stat(5) + 12) = start + 5*(i-1) + j;            
             stat(5) = stat(5) + 1;
         end
 
         if open(i,j) == 5
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'5'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'5'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(6) + 14;
             h.piece(pstart + stat(6) + 14) = start + 5*(i-1) + j;            
             stat(6) = stat(6) + 1;
         end
 
         if open(i,j) == 6
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'6'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'6'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(7) + 16;
             h.piece(pstart + stat(7) + 16) = start + 5*(i-1) + j;            
             stat(7) = stat(7) + 1;
         end   
 
         if open(i,j) == 7
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'7'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'7'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(8) + 18;
             h.piece(pstart + stat(8) + 18) = start + 5*(i-1) + j;            
             stat(8) = stat(8) + 1;
         end       
         if open(i,j) == 8
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'8'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'8'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(9) + 19;
             h.piece(pstart + stat(9) + 19) = start + 5*(i-1) + j;
             stat(9) = stat(9) + 1;
         end
 
         if open(i,j) == 9
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'9'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'9'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(10) + 20;
             h.piece(pstart + stat(10) + 20) = start + 5*(i-1) + j;
             stat(10) = stat(10) + 1;
         end
 
         if open(i,j) == 10
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'10'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'10'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(11) + 22;
             h.piece(pstart + stat(11) + 22) = start + 5*(i-1) + j;
             stat(11) = stat(11) + 1;
         end   
 
         if open(i,j) == 11
-            set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'11'))));
+            if ~bb || color == 'g'
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(strcat(color,'11'))));
+            else
+                set(ha(start + 5*(i - 1) + j),'CData', h.(genvarname(color)));
+            end
             h.pos(start + 5*(i-1) + j) = pstart + stat(12) + 25;
             h.piece(pstart + stat(12) + 25) = start + 5*(i-1) + j;
             stat(12) = stat(12) + 1;
@@ -103,6 +155,15 @@ for i = 1:6
     end
 
 end
+
+
+
+% black box 
+
+for i = 1:30
+
+
+
 
 
 if (~isequal(stat, [3;3;3;2;2;2;2;1;1;2;3;1]))
