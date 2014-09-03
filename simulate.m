@@ -1,6 +1,6 @@
-function  [h] = simulate(frompos, topos,  h, hObj)
+function  [h] = simulate(frompos, topos, hObj)
 
-
+h = guidata(hObj);
 [side1, X1, Y1] = pos2pos(frompos);
 
 if frompos > 120
@@ -21,6 +21,7 @@ elseif topos <= 120
     callback2(hObj, []);
 end
 
+h = guidata(hObj);
 end
 
 function [side, X, Y] = pos2pos(frompos)

@@ -22,7 +22,7 @@ function varargout = crossfire(varargin)
 
 % Edit the above text to modify the response to help crossfire
 
-% Last Modified by GUIDE v2.5 02-Sep-2014 22:09:57
+% Last Modified by GUIDE v2.5 03-Sep-2014 02:20:42
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -298,9 +298,9 @@ h.steps = 0;
 
 h.aiplay = 0;
 
-h.human = 1;
+h.human = 0;
 
-h.needresume = 0;
+
 
 
 
@@ -389,7 +389,7 @@ h = importpiece(ha, h, h.player4.color, h.player1_open);
 % Update h structure
 guidata(hObj, h);
 % UIWBIT makes crossfire wait for user response (see UIRESUME)
-% uiwait(h.figure1);
+% uiwait(h.crossfire);
 
 % AI INTERFACE
 
@@ -406,6 +406,15 @@ guidata(hObj, h);
 %  simulate('C',6,5, 'D', 6, 1, h, hObj);
 
 
+% while (h.player.color ~= 'w' || h.player.color ~= 'l') 
+
+
+
+
+
+            
+
+% end
 
 
 
@@ -1797,6 +1806,7 @@ global ha;
 h.side = 'BC';
 h.X = 0; h.Y = 0;
 h = playturn(ha, h);
+
 guidata(hObj, h);
 
 % --- Executes on button press in OB.
@@ -1861,29 +1871,27 @@ function AI_Callback(hObj, eventdata, h)
 % hObject    handle to AI (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
 h.aiplay = ~h.aiplay;
 if (h.aiplay == 1)
     set(h.AI,'String','AI Status: Online');
-    while (h.player.color ~= 'w' || h.player.color ~= 'l') 
+    while(h.player.color ~= 'w' || h.player.color ~= 'l') 
         
         if h.human == 1
             if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd'
 
-                [h,frompos, topos] = aiagent(h);
-                simulate(frompos, topos, h, hObj);
-                h.player.color = next_color(h);
+                [~,frompos, topos] = aiagent(hObj);
+                h = simulate(frompos, topos, hObj);
+
             elseif h.player.color == 'g'
-                uiwait(h.figure1);
+                uiwait(h.crossfire);
 
-
-                h.player.color = next_color(h);
             end    
         elseif h.human == 0
             if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd' || h.player.color == 'g'
 
-                [h,frompos, topos] = aiagent(h);
-                simulate(frompos, topos, h, hObj);
-                h.player.color = next_color(h);
+                [~,frompos, topos] = aiagent(hObj);
+                h = simulate(frompos, topos, hObj);
             end
             
         end

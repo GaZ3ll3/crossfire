@@ -111,7 +111,11 @@ position = start + addon;
            uiresume(h.figure1);
        end
        
+       
        h.player.color = next_color(h);
+       
+       
+       
     end
     
     
