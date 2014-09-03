@@ -18,7 +18,7 @@ h.steps = h.steps + 1;
 
 % move a piece to vaccum
 if (h.toP == -1)
-    disp('move to empty slot');
+%     disp('move to empty slot');
     set(ha(h.topos), 'CData', h.fdata);
     set(ha(h.frompos), 'CData', []);
     h.pos(h.topos) = h.fromP;
@@ -54,12 +54,12 @@ for i = 1:11
         tolvl = 12;
     end    
 end
-fprintf('%d vs. %d\n', fromlvl, tolvl);
+% fprintf('%d vs. %d\n', fromlvl, tolvl);
 
 % if boss dies, flag status turns to be 1.
 if  fromlvl <= 9 && tolvl <= 9
     % find levels of them
-    disp('battle');
+%     disp('battle');
     % both are not flags, mines
 %     set(ha(h.frompos), 'CData', h.tdata);
 
@@ -204,7 +204,7 @@ end
 
 
 if tolvl == 12 && h.toX == 1 && (h.toY == 2 || h.toY == 4)
-    disp('get flag')
+%     disp('get flag')
     set(ha(h.topos), 'CData', h.fdata);
     set(ha(h.frompos), 'CData', []);
     h.pos(h.topos) = h.fromP;
@@ -242,7 +242,7 @@ if tolvl == 12 && h.toX == 1 && (h.toY == 2 || h.toY == 4)
             if h.piece(i) ~= -1
                 set(ha(h.piece(i)), 'CData',[]);
                 h.pos(h.piece(i)) = -1;
-                h.piece(i) = -1;;
+                h.piece(i) = -1;
             end
         end
         return;

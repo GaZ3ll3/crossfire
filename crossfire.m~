@@ -1865,7 +1865,6 @@ h.aiplay = ~h.aiplay;
 if (h.aiplay == 1)
     set(h.AI,'String','AI Status: Online');
     while (h.player.color ~= 'w' || h.player.color ~= 'l') 
-        
         if h.human == 1
             if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd'
 
@@ -1879,12 +1878,6 @@ if (h.aiplay == 1)
                 h.player.color = next_color(h);
             end    
         elseif h.human == 0
-            if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd' || h.player.color == 'g'
-
-                [h,frompos, topos] = aiagent(h);
-                simulate(frompos, topos, h, hObj);
-                h.player.color = next_color(h);
-            end
             
         end
     end

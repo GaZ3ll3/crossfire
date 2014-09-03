@@ -107,7 +107,7 @@ position = start + addon;
         end
 %         disp(h.player.color);  
 
-       if h.player.color == 'g' && h.human == 1
+       if h.player.color == 'g' && h.human == 1 && h.a
            uiresume(h.figure1);
        end
        

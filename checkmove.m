@@ -16,7 +16,7 @@ if (it_can_move(h) && h.first_click == 0)
     if (h.player.color == 'd' && floor((h.fromP - 1)/25) ~= 3)
         return;
     end
-    disp('this move is from correct player');
+%     disp('this move is from correct player');
 % first click = 0 means one move is complete
 % logic for camp
     if ((h.fromX == 3 && h.fromY == 2) || ...
@@ -25,7 +25,7 @@ if (it_can_move(h) && h.first_click == 0)
             (h.fromX == 5 && h.fromY == 2) || ...
             (h.fromX == 5 && h.fromY == 4))
         % in camp
-        disp('move from camp');
+%         disp('move from camp');
         if (h.to == h.from) && (abs(h.toX - h.fromX) < 2) && (abs(h.toY - h.fromY) <2)  
             check = 1;
             return;
@@ -34,7 +34,7 @@ if (it_can_move(h) && h.first_click == 0)
 
 % logic for base
     if (h.fromX == 1 && h.fromY == 2) || (h.fromX == 1 && h.fromY == 4)
-        disp('move from base');
+%         disp('move from base');
         check = 0;
         return;
     end
@@ -60,11 +60,11 @@ if (it_can_move(h) && h.first_click == 0)
                      (ismember(h.frompos, h.rail17) && ismember(h.topos, h.rail17)) || ...
                      (ismember(h.frompos, h.rail18) && ismember(h.topos, h.rail18)) 
 
-        disp('same rail to same rail');
+%         disp('same rail to same rail');
         if (ismember(h.frompos, h.rail1) && ismember(h.topos, h.rail1))
             from_ind = find(h.rail1 == h.frompos);
             to_ind   = find(h.rail1 == h.topos);
-            disp('on rail1');
+%             disp('on rail1');
  
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail1(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
@@ -74,7 +74,7 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             else
                 h.pos(h.rail1(min(from_ind,to_ind):max(from_ind, to_ind)))
-                disp('someth in middle');
+%                 disp('someth in middle');
                 check = 0;
                 return;
             end
@@ -83,7 +83,7 @@ if (it_can_move(h) && h.first_click == 0)
         if (ismember(h.frompos, h.rail2) && ismember(h.topos, h.rail2))
             from_ind = find(h.rail2 == h.frompos);
             to_ind   = find(h.rail2 == h.topos);
-            disp('on rail2');
+%             disp('on rail2');
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail2(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
                     h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
@@ -92,7 +92,7 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             else
                 h.pos(h.rail2(min(from_ind,to_ind):max(from_ind, to_ind)))
-                disp('someth in middle')
+%                 disp('someth in middle')
                 check = 0;
                 return;
             end
@@ -101,7 +101,7 @@ if (it_can_move(h) && h.first_click == 0)
         if (ismember(h.frompos, h.rail3) && ismember(h.topos, h.rail3))
             from_ind = find(h.rail3 == h.frompos);
             to_ind   = find(h.rail3 == h.topos);
-            disp('on rail3');
+%             disp('on rail3');
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail3(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
                     h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
@@ -110,7 +110,7 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             else
                 h.pos(h.rail3(min(from_ind,to_ind):max(from_ind, to_ind)))
-                disp('someth in middle');
+%                 disp('someth in middle');
                 check = 0;
                 return;
             end
@@ -119,7 +119,7 @@ if (it_can_move(h) && h.first_click == 0)
         if (ismember(h.frompos, h.rail4) && ismember(h.topos, h.rail4))
             from_ind = find(h.rail4 == h.frompos);
             to_ind   = find(h.rail4 == h.topos);
-            disp('on rail4');
+%             disp('on rail4');
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail4(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
                     h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
@@ -128,7 +128,7 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             else
                 h.pos(h.rail4(min(from_ind,to_ind):max(from_ind, to_ind)))
-                disp('someth in middle');
+%                 disp('someth in middle');
                 check = 0;
                 return;
             end
@@ -137,7 +137,7 @@ if (it_can_move(h) && h.first_click == 0)
         if (ismember(h.frompos, h.rail5) && ismember(h.topos, h.rail5))
             from_ind = find(h.rail5 == h.frompos);
             to_ind   = find(h.rail5 == h.topos);
-            disp('rail5');
+%             disp('rail5');
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail5(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
                     h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
@@ -146,7 +146,7 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             else
                 h.pos(h.rail5(min(from_ind,to_ind):max(from_ind, to_ind)))
-                disp('someth in middlle');
+%                 disp('someth in middlle');
                 check = 0;
                 return;
             end
@@ -155,7 +155,7 @@ if (it_can_move(h) && h.first_click == 0)
         if (ismember(h.frompos, h.rail6) && ismember(h.topos, h.rail6))
             from_ind = find(h.rail6 == h.frompos);
             to_ind   = find(h.rail6 == h.topos);
-            disp('rail6');
+%             disp('rail6');
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail6(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
                     h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
@@ -163,7 +163,7 @@ if (it_can_move(h) && h.first_click == 0)
                 check = 1;
                 return;
             else
-                disp('someth in middle');
+%                 disp('someth in middle');
                 h.pos(h.rail6(min(from_ind,to_ind):max(from_ind, to_ind)))
                 check = 0;
                 return;
@@ -174,7 +174,7 @@ if (it_can_move(h) && h.first_click == 0)
         if (ismember(h.frompos, h.rail7) && ismember(h.topos, h.rail7))
             from_ind = find(h.rail7 == h.frompos);
             to_ind   = find(h.rail7 == h.topos);
-            disp('rail7');
+%             disp('rail7');
             if (from_ind ~= to_ind) && ...
                     sum(h.pos(h.rail7(min(from_ind,to_ind):max(from_ind, to_ind)))) == ...
                     h.fromP + h.toP + (-1)*(abs(from_ind - to_ind) - 1)
@@ -364,15 +364,15 @@ if (it_can_move(h) && h.first_click == 0)
             (ismember(h.frompos, h.rail17) && ~ismember(h.topos, h.rail17)) || ...
             (ismember(h.frompos, h.rail18) && ~ismember(h.topos, h.rail18))) 
             
-        disp('not same rail');
+%         disp('not same rail');
         % not same railway, must be miner.
         if (mod(h.fromP, 25) ~= 1 && mod(h.fromP, 25) ~= 2 && mod(h.fromP, 25) ~= 3)
-            disp('not a miner');
+%             disp('not a miner');
             check = 0;
             return
         else
             % it is a miner, then run the miner 
-            disp('miner move');
+%             disp('miner move');
             check = miner_dps(h);
             return;
         end
@@ -382,7 +382,7 @@ if (it_can_move(h) && h.first_click == 0)
         % two cases, within own side, or own side and central part.
         % latter one is included in railway case.
         % only consider within own side
-        disp('other cases');
+%         disp('other cases');
         if (h.from ~= h.to)
             % not same side
             check = 0;

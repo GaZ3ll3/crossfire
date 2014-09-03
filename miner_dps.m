@@ -28,10 +28,6 @@ elseif h.player.color == 'd'
     friend = 1;
 end
 
-
-me
-friend
-
 while not_found
     
     
@@ -43,9 +39,9 @@ while not_found
     next = [];
     for i = 1:max(size(curr, 1), size(curr, 2))
         
-        pos = curr(i)
+        pos = curr(i);
         
-        avail = find(h.railadj(pos,:))
+        avail = find(h.railadj(pos,:));
        
         
         
@@ -54,8 +50,6 @@ while not_found
                 next = union(next, avail(j));
             end
         end
-        
-        next
         
         visited(next) = 1;
         
