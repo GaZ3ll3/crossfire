@@ -101,13 +101,16 @@ function [ret] = avail_move(color, h)
         end
         temp = find(h.alladj(pos,:));
         for j = 1:size(temp, 2)
-            if temp(j) ~= pos && ~isallies(pos, temp(j), h) 
+            if temp(j) ~= pos && ~isallies(pos, temp(j), h) && ((iscamp(temp(j)) && ...
+                    h.pos(temp(j)) == -1) || (~iscamp(temp(j)))) && ((isbase(temp(j)) && ...
+                    h.pos(temp(j)) ~= -1) || (~isbase(temp(j))))
                 rows = rows + 1;
                 ret(rows, 1) = pos;
                 ret(rows, 2) = temp(j);
             end
         end
     end
+    return;
     
 end
 
@@ -122,11 +125,28 @@ function [ret] = isallies(pos1, pos2, h)
     
 end
  
-function [check] = can_move(pos1, pos2)
-check = 0;
+function [ret] = iscamp(pos)
+    loc = mod(pos, 30);
+    if loc == 12 || loc == 14 || loc == 18 || loc == 22 || loc == 24
+        ret = 1;
+        return;
+    else
+        ret = 0;
+        return;
+    end
 end
 
 
 
+function [ret] = isbase(pos)
+    loc = mod(pos, 30);
+    if (loc == 2 || loc == 4 ) && pos < 121
+        ret = 1;
+        return;
+    else
+        ret = 0;
+        return;
+    end
+end
 
 

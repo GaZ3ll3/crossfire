@@ -300,8 +300,10 @@ h.aiplay = 0;
 
 h.human = 0;
 
+% preallocate
+h.stat = zeros(2000,2);
 
-
+h.ptr  = 0;
 
 
 h.rail1 = [6, 11, 16, 21, 26,  124 , 128, 123, 90, 85, 80, 75, 70];
@@ -1909,7 +1911,7 @@ global ha;
 h.aiplay = ~h.aiplay;
 if (h.aiplay == 1)
     set(h.AI,'String','AI Status: Online');
-    while(h.player.color ~= 'w' || h.player.color ~= 'l') 
+    while(h.player.color ~= 'w' && h.player.color ~= 'l') 
         
         if h.human == 1
             if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd'
@@ -1939,6 +1941,10 @@ if (h.aiplay == 1)
             
         end
     end
+    guidata(hObj, h);
+    disp('game over');
+    set(h.AI,'String', 'AI Status: Offline')
+    h.aiplay = 0;
 else
     set(h.AI,'String', 'AI Status: Offline')
 end

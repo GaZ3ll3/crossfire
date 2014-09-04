@@ -9,7 +9,7 @@ database = get(h.record, 'Data');
 
 % enemy's AI
     if h.player.color == 'b'
-        pause(0.05);
+        pause(0.01);
         
         [res, frompos, topos] = AI_script('b', h.piece(26:50), database, h);
 
@@ -30,7 +30,7 @@ database = get(h.record, 'Data');
     end
     
     if h.player.color == 'd'
-        pause(0.05);
+        pause(0.01);
         
         [res, frompos, topos] = AI_script('d', h.piece(76:100), database, h);
 
@@ -52,7 +52,7 @@ database = get(h.record, 'Data');
     
 % allies' AI
     if h.player.color == 'r'
-        pause(0.05);
+        pause(0.01);
         
         [res, frompos, topos] = AI_script('r', h.piece(1:25), database, h);
  
@@ -72,7 +72,7 @@ database = get(h.record, 'Data');
     end
     
     if h.player.color == 'g'
-        pause(0.05);
+        pause(0.01);
         
         [res, frompos, topos] = AI_script('g', h.piece(51:75), database, h);
  

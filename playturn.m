@@ -97,6 +97,20 @@ position = start + addon;
         database{h.steps, 3} = strcat(h.to, strcat(int2str(h.toX), int2str(h.toY)));
         database{h.steps, 4} = fight_res;
         set(h.record, 'Data',database);
+        
+        
+        
+        h.ptr = h.ptr + 1;
+        
+        h.stat(h.ptr, 1) = (sum(find(h.piece(1:25) + 1)) + sum(find(h.piece(51:75) + 1)))/(sum(find(h.piece(26:50) + 1)) + sum(find(h.piece(76:100) + 1)));
+        h.stat(h.ptr, 2) = (size(find(h.piece(1:25) + 1), 1) + size(find(h.piece(51:75) + 1), 1))/(size(find(h.piece(26:50) + 1),1) + size(find(h.piece(76:100) + 1),1));
+        
+        % plot
+        
+        
+        plot(h.allies,1:h.ptr,h.stat(1:h.ptr,1), 'r');
+        hold on;
+        plot(h.allies, 1:h.ptr, h.stat(1:h.ptr,2), 'b');
 
 %         disp(h.loss);
 %         disp(h.flags);        
