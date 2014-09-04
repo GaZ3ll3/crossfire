@@ -352,6 +352,40 @@ for k = 1:18
     end
 end
 
+
+h.alladj = h.railadj;
+
+for i = 1:4
+    for j = 1:6
+        for k = 1:4
+            h.alladj((i - 1)*30 + 5*(j - 1) + k,(i - 1)*30 + 5*(j - 1) + k + 1)  = 1;
+            h.alladj((i - 1)*30 + 5*(j - 1) + k + 1, (i - 1)*30 + 5*(j - 1) + k)  = 1;            
+        end
+    end
+end
+
+for i = 1:4
+    for k = 1:5
+        for j = 1:5
+            h.alladj((i - 1)*30 + 5*(j  - 1) + k, (i-1)*30 + 5*j + k) = 1;
+            h.alladj((i - 1)*30 + 5*j + k, (i - 1)*30 + 5*(j  - 1) + k) = 1;            
+        end
+    end
+end
+
+
+shifts = [-4, 4, -6, 6];
+keys = [12, 14, 18, 22, 24];
+
+for i = 1:4
+    for j = 1:4
+        for k = 1:5
+            h.alladj((i-1)*30 + keys(k),(i-1)*30 + keys(k) + shifts(j)) = 1;
+            h.alladj((i-1)*30 + keys(k) + shifts(j), (i-1)*30 + keys(k)) = 1;
+        end
+    end
+end
+
  
 
 
@@ -1871,7 +1905,7 @@ function AI_Callback(hObj, eventdata, h)
 % hObject    handle to AI (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+global ha;
 h.aiplay = ~h.aiplay;
 if (h.aiplay == 1)
     set(h.AI,'String','AI Status: Online');
@@ -1880,7 +1914,12 @@ if (h.aiplay == 1)
         if h.human == 1
             if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd'
 
-                [~,frompos, topos] = aiagent(hObj);
+                [h,frompos, topos] = aiagent(ha, hObj);
+                if frompos == -1 || topos == -1
+                    h.player.color = next_color(h);
+                    guidata(hObj, h);
+                    continue;         
+                end
                 h = simulate(frompos, topos, hObj);
 
             elseif h.player.color == 'g'
@@ -1889,8 +1928,12 @@ if (h.aiplay == 1)
             end    
         elseif h.human == 0
             if h.player.color == 'r' || h.player.color == 'b' || h.player.color == 'd' || h.player.color == 'g'
-
-                [~,frompos, topos] = aiagent(hObj);
+                [h,frompos, topos] = aiagent(ha, hObj);
+                if frompos == -1 || topos == -1
+                    h.player.color = next_color(h);
+                    guidata(hObj, h);
+                    continue;         
+                end
                 h = simulate(frompos, topos, hObj);
             end
             

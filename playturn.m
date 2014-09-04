@@ -11,6 +11,10 @@ function [h] = playturn(ha, h)
         pstart = 50;
     elseif h.player.color == 'd'
         pstart = 75;
+    elseif h.player.color == 'w'
+        return;
+    elseif h.player.color == 'l'
+        return;
     end
 
     if h.side == 'A'
@@ -108,7 +112,7 @@ position = start + addon;
 %         disp(h.player.color);  
 
        if h.player.color == 'g' && h.human == 1
-           uiresume(h.figure1);
+           uiresume(h.crossfire);
        end
        
        

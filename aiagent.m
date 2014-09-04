@@ -1,4 +1,4 @@
-function [h, frompos, topos] = aiagent(hObj)
+function [h, frompos, topos] = aiagent(ha, hObj)
 %aiagent call AI script to give movements
 %   
 
@@ -9,35 +9,86 @@ database = get(h.record, 'Data');
 
 % enemy's AI
     if h.player.color == 'b'
-        pause(2);
+        pause(0.05);
         
-        [frompos, topos] = AI_script('b', h.piece(26:50), database);
-        
+        [res, frompos, topos] = AI_script('b', h.piece(26:50), database, h);
 
+        if res == 0
+            h.loss(2) = 1;
+            for i = 26:50
+                if h.piece(i) ~= -1
+                    set(ha(h.piece(i)), 'CData',[]);
+                    h.pos(h.piece(i)) = -1;
+                    h.piece(i) = -1;
+                end
+             end
+        end
+        
+    guidata(hObj,h);
+    
+    return;
     end
     
     if h.player.color == 'd'
-        pause(2);
+        pause(0.05);
         
-        [frompos, topos] = AI_script('d', h.piece(76:100), database);
+        [res, frompos, topos] = AI_script('d', h.piece(76:100), database, h);
 
-
+        if res == 0
+            h.loss(4) = 1;
+            
+            for i = 76:100
+                if h.piece(i) ~= -1
+                    set(ha(h.piece(i)), 'CData',[]);
+                    h.pos(h.piece(i)) = -1;
+                    h.piece(i) = -1;
+                end
+             end
+        end
+        guidata(hObj,h);
+        return;
+        
     end
     
 % allies' AI
     if h.player.color == 'r'
-        pause(2);
+        pause(0.05);
         
-        [frompos, topos] = AI_script('r', h.piece(1:25), database);
-        
-
+        [res, frompos, topos] = AI_script('r', h.piece(1:25), database, h);
+ 
+        if res == 0
+            h.loss(1) = 1;
+            for i = 1:25
+                if h.piece(i) ~= -1
+                    set(ha(h.piece(i)), 'CData',[]);
+                    h.pos(h.piece(i)) = -1;
+                    h.piece(i) = -1;
+                end
+             end
+        end
+        guidata(hObj,h);
+        return;
+       
     end
     
     if h.player.color == 'g'
-        pause(2);
+        pause(0.05);
         
-        [frompos, topos] = AI_script('g', h.piece(51:75), database);
-        
+        [res, frompos, topos] = AI_script('g', h.piece(51:75), database, h);
+ 
+        if res == 0
+            h.loss(3) = 1;
+            for i = 51:75
+                if h.piece(i) ~= -1
+                    set(ha(h.piece(i)), 'CData',[]);
+                    h.pos(h.piece(i)) = -1;
+                    h.piece(i) = -1;
+                end
+             end
+        end
+        guidata(hObj,h);
+ 
+        return;
     end
     % human or not
     
@@ -53,22 +104,6 @@ database = get(h.record, 'Data');
 end
 
 
-function [ret] = avail_move(color, h)
-    if color == 'r'
-        pstart = 0;
-    elseif color == 'b'
-        pstart = 25;
-    elseif color == 'g'
-        pstart = 50;
-    elseif color == 'd'
-        pstart = 75;
-    end
-    
-    % search available moves for each player.
-    % this should be in each player's AI script
-
-
-end
 
 function [side, X, Y] = pos2pos(frompos)
 

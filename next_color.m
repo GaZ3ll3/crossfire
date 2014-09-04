@@ -1,6 +1,5 @@
 function [ret] = next_color(h)
 % next_color find next player's color
-
 if sum(h.loss) == 3
     if h.loss(1) == 0 || h.loss(3) == 0
         ret = 'w';
