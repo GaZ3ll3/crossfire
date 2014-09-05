@@ -158,13 +158,6 @@ end
 
 
 
-% black box 
-
-for i = 1:30
-
-
-
-
 
 if (~isequal(stat, [3;3;3;2;2;2;2;1;1;2;3;1]))
     error('incorrect number of some item');
