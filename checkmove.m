@@ -39,7 +39,6 @@ if (it_can_move(h) && h.first_click == 0)
         return;
     end
 % logic for railway to railway
-
 % same railway
     if (ismember(h.frompos, h.rail1) && ismember(h.topos, h.rail1)) || ...
          (ismember(h.frompos, h.rail2) && ismember(h.topos, h.rail2)) ||...
@@ -73,7 +72,7 @@ if (it_can_move(h) && h.first_click == 0)
                 check = 1;
                 return;
             else
-                h.pos(h.rail1(min(from_ind,to_ind):max(from_ind, to_ind)))
+               
 %                 disp('someth in middle');
                 check = 0;
                 return;
@@ -91,7 +90,7 @@ if (it_can_move(h) && h.first_click == 0)
                 check = 1;
                 return;
             else
-                h.pos(h.rail2(min(from_ind,to_ind):max(from_ind, to_ind)))
+               
 %                 disp('someth in middle')
                 check = 0;
                 return;
@@ -109,7 +108,7 @@ if (it_can_move(h) && h.first_click == 0)
                 check = 1;
                 return;
             else
-                h.pos(h.rail3(min(from_ind,to_ind):max(from_ind, to_ind)))
+               
 %                 disp('someth in middle');
                 check = 0;
                 return;
@@ -127,7 +126,7 @@ if (it_can_move(h) && h.first_click == 0)
                 check = 1;
                 return;
             else
-                h.pos(h.rail4(min(from_ind,to_ind):max(from_ind, to_ind)))
+                
 %                 disp('someth in middle');
                 check = 0;
                 return;
@@ -145,7 +144,7 @@ if (it_can_move(h) && h.first_click == 0)
                 check = 1;
                 return;
             else
-                h.pos(h.rail5(min(from_ind,to_ind):max(from_ind, to_ind)))
+
 %                 disp('someth in middlle');
                 check = 0;
                 return;
@@ -164,7 +163,6 @@ if (it_can_move(h) && h.first_click == 0)
                 return;
             else
 %                 disp('someth in middle');
-                h.pos(h.rail6(min(from_ind,to_ind):max(from_ind, to_ind)))
                 check = 0;
                 return;
             end

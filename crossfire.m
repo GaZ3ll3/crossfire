@@ -299,7 +299,6 @@ h.steps = 0;
 h.aiplay = 0;
 
 h.human = 0;
-
 % preallocate
 h.stat = zeros(2000,2);
 

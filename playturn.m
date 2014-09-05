@@ -83,7 +83,9 @@ position = start + addon;
 
 
     end
+
     [check, h] = checkmove(h);
+
     
 
     
@@ -111,6 +113,7 @@ position = start + addon;
         plot(h.allies,1:h.ptr,h.stat(1:h.ptr,1), 'r');
         hold on;
         plot(h.allies, 1:h.ptr, h.stat(1:h.ptr,2), 'b');
+        grid(h.allies, 'on');
 
 %         disp(h.loss);
 %         disp(h.flags);        
