@@ -4,14 +4,18 @@ function [res, frompos, topos] = AI_script(color, own_pieces, database, h)
 
 if color == 'r'
     pstart = 0;
+    apstart = 50;
 elseif color == 'b'
     pstart = 25;
+    apstart = 75;
 elseif color == 'g'
     pstart = 50;
+    apstart = 0;
 elseif color == 'd'
     pstart = 75;
+    apstart = 25;
 end
-[res, frompos, topos] = rand_ai(color, h, pstart);
+[res, frompos, topos] = rand_ai(color, h, pstart, apstart);
 
 end
 
@@ -49,9 +53,7 @@ function [ret] = avail_move(color, h)
         for j = 1:size(temp, 2)
             if temp(j) ~= pos && ~isallies(pos, temp(j), h) && ...
                     ((iscamp(temp(j)) && h.pos(temp(j)) == -1) || ...
-                    (~iscamp(temp(j)))) && ((isbase(temp(j)) && h.pos(temp(j)) ~= -1) && ...
-                    (h.flag(floor((h.piece(temp(j)) - 1)/25) + 1) ~= 1 ||...
-                    (h.flag(floor((h.piece(temp(j)) - 1)/25)) ==1  && h.pos(temp(j)) == floor((h.piece(temp(j)) - 1)/25)*25 + 25))) || (~isbase(temp(j)))
+                    (~iscamp(temp(j))) && ((isbase(temp(j)) && h.pos(temp(j)) ~= -1))) || (~isbase(temp(j)))
                 rows = rows + 1;
                 ret(rows, 1) = pos;
                 ret(rows, 2) = temp(j);
@@ -252,7 +254,7 @@ end
 
 
 
-function [res, frompos, topos] = rand_ai(color ,h, pstart)
+function [res, frompos, topos] = rand_ai(color ,h, pstart, apstart)
 
     res = 1;
     
@@ -281,19 +283,47 @@ function [res, frompos, topos] = rand_ai(color ,h, pstart)
             frompos = moves(ind, 1);
             topos = moves(ind, 2);  
         else
-            temp = intersect(find(h.pos(moves(admissible, 1)) ~= pstart + 20), find(h.pos(moves(admissible, 1)) ~= pstart + 21));
-            if ~isempty(temp)
-                % not a bomb
-                frompos = moves(h.pos(temp(1)), 1);
-                topos = moves(h.pos(temp(1)), 2);
-                
-            else
-                frompos = moves(admissible(1), 1);
-                topos = moves(admissible(1), 2);
-            end
+            frompos = moves(admissible(1), 1);
+            topos = moves(admissible(1), 2);
         end
     end
 end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% THREAT FIELD BASED ARTIFICIAL INTELLIGENCE
+
+% GOAL : MAXIMIZE OWN THREAT AND MINIMIZE OPPONENT'S
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
