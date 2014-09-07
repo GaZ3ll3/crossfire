@@ -535,7 +535,7 @@ void MainWindow::configuration()
             var = "r" + std::to_string(layout[i] - 1);
         }
 
-        if (~isCamp(i))
+        if (!isCamp(i))
         {
             buttons[i]->setIcon(QIcon(QString::fromStdString(prefix + var + postfix)));
             buttons[i]->setIconSize(QSize(SIZE,SIZE));
@@ -565,7 +565,7 @@ void MainWindow::configuration()
         {
             var = "b" + std::to_string(layout[i] - 1);
         }
-        if (~isCamp(i))
+        if (!isCamp(i))
         {
             buttons[i + 30]->setIcon(QIcon(QString::fromStdString(prefix + var + postfix)));
             buttons[i + 30]->setIconSize(QSize(SIZE,SIZE));
@@ -588,7 +588,7 @@ void MainWindow::configuration()
 
 
         var = "g" + std::to_string(layout[i] - 1);
-        if (~isCamp(i))
+        if (!isCamp(i))
         {
             buttons[i + 60]->setIcon(QIcon(QString::fromStdString(prefix + var + postfix)));
             buttons[i + 60]->setIconSize(QSize(SIZE,SIZE));
@@ -616,7 +616,7 @@ void MainWindow::configuration()
         {
             var = "d" + std::to_string(layout[i] - 1);
         }
-        if (~isCamp(i))
+        if (!isCamp(i))
         {
             buttons[i + 90]->setIcon(QIcon(QString::fromStdString(prefix + var + postfix)));
             buttons[i + 90]->setIconSize(QSize(SIZE,SIZE));
