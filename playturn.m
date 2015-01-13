@@ -109,11 +109,19 @@ position = start + addon;
         
         % plot
         
-        
-        plot(h.allies,1:h.ptr,h.stat(1:h.ptr,1), 'r');
-        hold on;
-        plot(h.allies, 1:h.ptr, h.stat(1:h.ptr,2), 'b');
-        grid(h.allies, 'on');
+        if h.ptr < 500
+            plot(h.allies,1:h.ptr,h.stat(1:h.ptr,1), 'r');
+            hold on;
+            plot(h.allies, 1:h.ptr, h.stat(1:h.ptr,2), 'b');
+            grid(h.allies, 'on');
+            hold off;
+        else
+            plot(h.allies,h.ptr-499:h.ptr,h.stat(h.ptr-499:h.ptr,1), 'r');
+            hold on;
+            plot(h.allies, h.ptr-499:h.ptr, h.stat(h.ptr-499:h.ptr,2), 'b');
+            grid(h.allies, 'on');
+            hold off;
+        end
 
 %         disp(h.loss);
 %         disp(h.flags);        
